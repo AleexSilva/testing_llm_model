@@ -8,7 +8,7 @@ from openai import OpenAI
 load_dotenv()
 openai = OpenAI()
 api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = api_key
+
 
 # Check the key
 
@@ -21,6 +21,7 @@ elif api_key.strip() != api_key:
 else:
     print("API key found and looks good so far!")
 
+openai.api_key = api_key
 
 def get_summary(url):
     response = requests.get(url)
@@ -35,3 +36,6 @@ def get_summary(url):
         temperature=0.7,
     )
     return summary.choices[0].text
+
+
+
