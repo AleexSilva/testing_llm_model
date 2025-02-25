@@ -20,3 +20,23 @@ def get_summary(url):
         temperature=0.7,
     )
     return summary.choices[0].text
+
+# Try accessing a specific variable
+api_key = os.getenv("OPENAI_API_KEY")
+print(f"API Key: {api_key}")
+
+
+system_prompt = "You are an assistant that analyzes the contents of a website \
+and provides a short summary, ignoring text that might be navigation related. \
+Respond in markdown."
+
+
+# A function that writes a User Prompt that asks for summaries of websites:
+
+def user_prompt_for(website):
+    user_prompt = f"You are looking at a website titled {website.title}"
+    user_prompt += "\nThe contents of this website is as follows; \
+please provide a short summary of this website in markdown. \
+If it includes news or announcements, then summarize these too.\n\n"
+    user_prompt += website.text
+    return user_prompt
