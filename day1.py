@@ -46,3 +46,11 @@ def messages_for(website):
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt_for(website)}
     ]
+
+def summarize(url):
+    website = Website(url)
+    response = openai.chat.completions.create(
+        model = "gpt-4o-mini",
+        messages = messages_for(website)
+    )
+    return response.choices[0].message.content
