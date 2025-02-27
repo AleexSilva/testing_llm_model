@@ -40,3 +40,9 @@ please provide a short summary of this website in markdown. \
 If it includes news or announcements, then summarize these too.\n\n"
     user_prompt += website.text
     return user_prompt
+
+def messages_for(website):
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt_for(website)}
+    ]
