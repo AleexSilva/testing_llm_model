@@ -54,3 +54,7 @@ def summarize(url):
         messages = messages_for(website)
     )
     return response.choices[0].message.content
+
+def display_summary(url):
+    summary = summarize(url)
+    display(Markdown(summary))
